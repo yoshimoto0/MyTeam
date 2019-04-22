@@ -93,6 +93,7 @@ public class WordDAO {
 		return kindList;	
 	}
 	
+	
 	/*public ArrayList<WordDTO> selectWordList() {
 		
 		String sql = "select * from word";
