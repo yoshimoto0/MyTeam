@@ -1,62 +1,66 @@
 package vo;
 
+import static db.JdbcUtils.close;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
 public class BookDAO {
   
-	private String userId;
-	private int wordNum;
-	private int sheet;
-	private String bookName;
-	private int star;
-	  
-	  
-	public BookDAO(){  }
-	  
-	public BookDAO(String userId, int wordNum, int sheet, String bookName, int star){
-		this.userId = userId;
-		this.wordNum = wordNum;
-		this.sheet = sheet;
-		this.bookName = bookName;
-		this.star = star;
-	}	
+	Connection conn;
+	
+	public void setConnection(Connection conn) {
+		this.conn = conn;
+	}
+	
+	public void createWordBook(BookDTO book) {
+		
+		String sql = "insert into word_book values(?,?,?,?)";
+		
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getUserId());
+			pstmt.setInt(2, book.getWordNum());
+			pstmt.setInt(3, book.getSheet());
+			pstmt.setString(4, book.getBookName());
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+	}
+	
+	public ArrayList<WordBookDTO> viewWordBook(String userID, String BookName){
+		
+		String sql = "select word_book.wordNum, word, meaning, star from word_book, word where user_id = ? and name = ?"
+				+ "and word.num = (select wordnum from word_book where ";
+		
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 
-	public String getUserId() {
-		return userId;
-	}
-	
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	public int getWordNum() {
-		return wordNum;
-	}
-	
-	public void setWordNum(int wordNum) {
-		this.wordNum = wordNum;
-	}
-	
-	public int getSheet() {
-		return sheet;
-	}
-	
-	public void setSheet(int sheet) {
-		this.sheet = sheet;
-	}
-	
-	public String getBookName() {
-		return bookName;
-	}
-	
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
-	}
-	
-	public int getStar() {
-		return star;
-	}
-	
-	public void setStar(int star) {
-		this.star = star;
+		ArrayList<WordBookDTO> list = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userID);
+			pstmt.setString(2, BookName);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				list = 
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		return;
 	}
 	  
 }
