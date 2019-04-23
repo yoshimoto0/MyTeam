@@ -22,6 +22,32 @@ create table word(
 drop sequence word_num;
 create sequence word_num;
 
+
+drop table book;
+
+create table book(
+    
+	user_id varchar2(20) not null,
+	wordnum number not null,
+	book_id number not null,
+	star number default 0	
+	
+);
+
+drop table book_list;
+
+create table book_list(
+    
+	book_id number primary key,
+	book_name varchar2(20) not null,
+	user_id varchar2(20) not null,		
+	hit number default 0
+	
+);
+
+drop sequence book_id;
+create sequence book_id;
+
 drop table kind;
 
 create table kind(
@@ -32,33 +58,12 @@ create table kind(
 drop sequence kind_id;
 create sequence kind_id;
 
-drop table book;
-
-create table book(
-    
-	user_id varchar2(20) not null,
-	wordnum number not null,
-	book_id number not null,
-	star number default 0 not null	
-);
-
-drop table book_list;
-
-create table book_list(
-    
-	book_id number praimary key,
-	book_name varchar2(20) not null,
-	user_id varchar2(20) not null,		
-);
-
-drop sequence book_id;
-create sequence book_id;
 
 drop table grade;
 
 create table grade(
     
-	id number primary key,
+	grade_id number primary key,
 	t_date date not null,   
 	user_id varchar2(20) not null,
 	name varchar2(20) not null,
@@ -95,3 +100,4 @@ create table qna(
 	ans varchar2(4000) not null
 	check number default 0 not null
 );
+
