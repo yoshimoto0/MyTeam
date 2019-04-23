@@ -98,6 +98,6 @@ create table qna(
 	w_date date not null,
 	writer varchar2(50) not null,
 	ans varchar2(4000) not null
-	check number default 0 not null
+	read number default 0 not null
 );
 
