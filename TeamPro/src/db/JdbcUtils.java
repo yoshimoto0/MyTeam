@@ -24,6 +24,22 @@ public class JdbcUtils {
 		return conn;
 	}
 	
+	public static void close(Connection conn, PreparedStatement pstmt, ResultSet rs) {
+		try {
+			if(rs != null) {
+				rs.close();;
+			}
+			if(pstmt != null) {
+				pstmt.close();;
+			}
+			if(conn != null) {
+				conn.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void close(Connection conn) {
 		try {
 			conn.close();

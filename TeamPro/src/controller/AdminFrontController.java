@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.Action;
-import vo.ActionForward;
+import member.action.Action;
+import member.vo.ActionForward;
 
 /**
  * Servlet implementation class AdminFrontController
