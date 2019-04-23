@@ -32,16 +32,27 @@ create table kind(
 drop sequence kind_id;
 create sequence kind_id;
 
-drop table word_book;
+drop table book;
 
-create table word_book(
+create table book(
     
 	user_id varchar2(20) not null,
 	wordnum number not null,
-	sheet number not null,
-	name varchar2(20) not null,
+	book_id number not null,
 	star number default 0 not null	
 );
+
+drop table book_list;
+
+create table book_list(
+    
+	book_id number praimary key,
+	book_name varchar2(20) not null,
+	user_id varchar2(20) not null,		
+);
+
+drop sequence book_id;
+create sequence book_id;
 
 drop table grade;
 
@@ -58,6 +69,7 @@ create table grade(
 
 drop sequence grade_id;
 create sequence grade_id;
+
 
 drop table notice;
 

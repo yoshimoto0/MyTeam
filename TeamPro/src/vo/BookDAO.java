@@ -17,7 +17,7 @@ public class BookDAO {
 	
 	public void createWordBook(BookDTO book) {
 		
-		String sql = "insert into word_book values(?,?,?,?)";
+		String sql = "insert into book values(?,?,?,?)";
 		
 		PreparedStatement pstmt = null;
 		try {
@@ -35,10 +35,30 @@ public class BookDAO {
 		}
 	}
 	
+	public void addWordToBook(BookDTO book) {
+		
+		String sql = "insert into book values(?,?,?,?,0)";
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, book.getUserId());
+			pstmt.setInt(2, book.getWordNum());
+			pstmt.setInt(3, book.getSheet());
+			pstmt.setString(4, book.getBookName());
+			pstmt.executeUpdate();			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+	}
+	
 	public ArrayList<WordBookDTO> viewWordBook(String userID, String BookName){
 		
-		String sql = "select word_book.wordNum, word, meaning, star from word_book, word where user_id = ? and name = ?"
-				+ "and word.num = (select wordnum from word_book where ";
+		String sql = "select book.wordNum, word, meaning, star from book, word where user_id = ? and name = ? and word.num = (select wordnum from book where ";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -52,7 +72,10 @@ public class BookDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				list = 
+				list = new  ArrayList<WordBookDTO> ();
+				while(rs.next()) {
+					list.add(new WordBookDTO())
+				}
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -60,7 +83,7 @@ public class BookDAO {
 			close(rs);
 			close(pstmt);
 		}
-		return;
+		return list;
 	}
 	  
 }
