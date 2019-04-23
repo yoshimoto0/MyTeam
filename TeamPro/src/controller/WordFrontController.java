@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import action.Action;
-import vo.ActionForward;
+import word.action.Action;
+import word.vo.ActionForward;
 
 /**
  * Servlet implementation class WordFrontController
