@@ -14,10 +14,14 @@ public class BookDTO {
 		this.wordNum = wordNum;
 		this.book_id = book_id;
 		this.star = star;
-	}	
+	}		
 
 	public String getUserId() {
 		return userId;
+	}
+	
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public int getWordNum() {
@@ -44,9 +48,4 @@ public class BookDTO {
 		this.star = star;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-	
-	  
 }

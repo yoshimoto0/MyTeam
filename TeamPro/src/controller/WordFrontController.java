@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import word.action.Action;
+import word.action.AddNewWordAction;
+import word.action.SearchWordAction;
+import word.action.addWordToBookAction;
+import word.action.createWordBookAction;
 import word.vo.ActionForward;
 
 /**
@@ -54,15 +58,62 @@ public class WordFrontController extends HttpServlet {
     	String contextPath = request.getContextPath();
     	String command = requestURI.substring(contextPath.length());
     	
-		if(command.equals("addWord.word")) {
+		if(command.equals("/addNewWord.word")) {
+			action = new AddNewWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/Search.word")) {
+			action = new SearchWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/createWordBook.word")) {
+			action = new createWordBookAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/addWordToBook.word")) {
+			action = new addWordToBookAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/deleteWordBook.word")) {
 //			action = new AddNewWordAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("")) {
-			
+		}else if(command.equals("/viewAllWordBook.word")) {
+//			action = new AddNewWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/viewOwnWordBook.word")) {
+//			action = new AddNewWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/viewWordBook.word")) {
+//			action = new AddNewWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		if(af != null) {
