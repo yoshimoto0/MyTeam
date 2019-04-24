@@ -34,7 +34,7 @@ public class MemberDAO {
 		
 		return res;
 	}
-	public MemberDTO shechMember(String email) {
+	public MemberDTO seachMember(String email) {
 		String sql = "select * from member where email == ?";
 		Connection conn = null;
 		PreparedStatement pstmt = null;

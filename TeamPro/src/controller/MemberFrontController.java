@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import member.action.CreateAction;
 import member.action.CreateFormAction;
 import member.action.LoginAction;
-import member.action.SherchAction;
+import member.action.SearchAction;
 import member.action.UpdateAction;
 import member.action.AdminShowAction;
 import member.action.Action;
@@ -53,42 +53,42 @@ public class MemberFrontController extends HttpServlet {
 		     	String contextPath = request.getContextPath(); 
 		     	String command = requestURI.substring(contextPath.length()); 
 		     	 
-				if(command.equals("create.member")) { 
+				if(command.equals("/create.member")) { 
 					action = new CreateAction();//회원가입
 					try { 
 		 				af = action.execute(request, response); 
 		 			} catch (Exception e) { 
 		 				e.printStackTrace(); 
 		 			} 
-		 		}else if(command.equals("createform.member")) {//회원가입폼이동
+		 		}else if(command.equals("/createform.member")) {//회원가입폼이동
 		 			action = new CreateFormAction();
 					try { 
 		 				af = action.execute(request, response); 
 		 			} catch (Exception e) { 
 		 				e.printStackTrace(); 
 		 			} 
-				}else if(command.equals("sherch.member")) {//아이디,비밀번호찾기
-					action = new SherchAction();
+				}else if(command.equals("/sesrch.member")) {//아이디,비밀번호찾기
+					action = new SearchAction();
 					try { 
 						af = action.execute(request, response); 
 					} catch (Exception e) { 
 						e.printStackTrace(); 
 					} 
-				}else if(command.equals("allshow.member")) {//관리자 회원정보 전체보기
+				}else if(command.equals("/allshow.member")) {//관리자 회원정보 전체보기
 					action = new AdminShowAction();
 					try { 
 						af = action.execute(request, response); 
 					} catch (Exception e) { 
 						e.printStackTrace(); 
 					} 	
-				}else if(command.equals("login.member")) {//로그인
+				}else if(command.equals("/login.member")) {//로그인
 					action = new LoginAction();
 					try { 
 						af = action.execute(request, response); 
 					} catch (Exception e) { 
 						e.printStackTrace(); 
 					} 	
-				}else if(command.equals("update.member")) {//회원정보수정
+				}else if(command.equals("/update.member")) {//회원정보수정
 					action = new UpdateAction();
 					try { 
 						af = action.execute(request, response); 

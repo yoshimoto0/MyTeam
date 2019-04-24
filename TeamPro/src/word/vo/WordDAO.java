@@ -125,5 +125,42 @@ public class WordDAO {
 		
 		return wordList;
 	}
-	
+
+	public ArrayList<WordDTO> getWord(String word) {
+
+		String sql = "select * from word where word like '%?%";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<WordDTO> wordList = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, word);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				wordList = new ArrayList<WordDTO>();
+				do {
+					wordList.add(new WordDTO(rs.getInt("num"),
+											rs.getString("word"),
+											rs.getString("meaning"),
+											rs.getInt("kind")));
+				}while(rs.next());
+			}
+						
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return wordList;
+		
+	}
+
 }

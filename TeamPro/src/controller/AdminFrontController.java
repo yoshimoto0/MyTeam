@@ -9,8 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.action.Action;
-import member.vo.ActionForward;
+import admin.action.Action;
+import admin.action.AddKindAction;
+import admin.action.AddNoticeAction;
+import admin.action.RemoveKindAction;
+import admin.action.RemoveNoticeAction;
+import admin.action.RemoveWordAction;
+import admin.action.RequestRemoveAction;
+import admin.action.ViewRequestAction;
+import admin.action.AdminViewAction;
+import admin.action.MemberUpgradeAction;
+import admin.vo.ActionForward;
 
 /**
  * Servlet implementation class AdminFrontController
@@ -53,62 +62,69 @@ public class AdminFrontController extends HttpServlet {
     	String contextPath = request.getContextPath();
     	String command = requestURI.substring(contextPath.length());
     	
-		if(command.equals("addWord.admin")) {
-//			action = new AddWordAction();
+		if(command.equals("/addNotice.admin")) {//이벤트/공지사항 추가 기능
+			action = new AddNoticeAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("removeWord.admin")) {
-//			action = #;
+		}else if(command.equals("/removeNotice.admin")) {//이벤트/공지사항 삭제 기능
+			action = new RemoveNoticeAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("updateWord.admin")) {
-//			action = #;
+		}else if(command.equals("/removeWord.admin")) {//단어삭제기능
+			action = new RemoveWordAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("addKind.admin")) {
-//			action = #;
+		}else if(command.equals("/addKind.admin")) {//종류추가기능
+			action = new AddKindAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("removeKind.admin")) {
-//			action = #;
+		}else if(command.equals("/removeKind.admin")) {//종류 삭제 기능
+			action = new RemoveKindAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("updateKind.admin")) {
-//			action = #;
+		}else if(command.equals("/adminView.admin")) { //단어회원색기능
+			action = new AdminViewAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("viewAllMember.admin")) {
-//			action = #;
+		}else if(command.equals("/viewRequest.admin")) { //문의사항보기
+			action = new ViewRequestAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
-		}else if(command.equals("viewOneMember.admin")) {
-//			action = #;
+		}else if(command.equals("/removeRequest.admin")) { //문의사항처리--> 삭제
+			action = new RequestRemoveAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}			
+		}else if(command.equals("/memberupgrade.admin")) { //관리자권한주기
+			action = new MemberUpgradeAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}		
 		}
 		
 		if(af != null) {
@@ -121,5 +137,6 @@ public class AdminFrontController extends HttpServlet {
     	}
 		
 	}
+
 
 }
