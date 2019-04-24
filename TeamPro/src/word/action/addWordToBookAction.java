@@ -7,7 +7,7 @@ import javax.servlet.http.HttpSession;
 import word.vo.ActionForward;
 import word.vo.BookDTO;
 
-public class addWordToBookAction implements Action {
+/*public class addWordToBookAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -20,4 +20,4 @@ public class addWordToBookAction implements Action {
 //		return ;
 	}
 
-}
+}*/

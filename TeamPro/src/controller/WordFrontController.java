@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import word.action.Action;
 import word.action.AddNewWordAction;
 import word.action.SearchWordAction;
-import word.action.addWordToBookAction;
+//import word.action.addWordToBookAction;
 import word.action.createWordBookAction;
 import word.action.openMainAction;
 import word.vo.ActionForward;
@@ -81,7 +81,7 @@ public class WordFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/addWordToBook.word")) {
-			action = new addWordToBookAction();
+//			action = new addWordToBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
