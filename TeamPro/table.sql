@@ -13,10 +13,12 @@ create table member(
 drop table word;
 
 create table word(
+
 	num number primary key,
 	word varchar2(50) not null,
 	meaning varchar2(4000) not null,
-	kind number not null,
+	kind number not null
+	
 );
 
 drop sequence word_num;

@@ -91,7 +91,7 @@ public class BookDAO {
 		return bookList;
 	}
 	
-public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가지고 있는 단어장 보기
+	public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가지고 있는 단어장 보기
 		
 		String sql = "select * form book-list where user_id = ?";
 		
