@@ -86,6 +86,13 @@ public class WordFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+		}else if(command.equals("/main.word")) {
+//			action = new AddNewWordAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}else if(command.equals("/deleteWordBook.word")) {
 //			action = new AddNewWordAction();
 			try {

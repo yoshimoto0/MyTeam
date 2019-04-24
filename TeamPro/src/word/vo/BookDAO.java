@@ -77,6 +77,7 @@ public class BookDAO {
 					bookList.add(new BookListDTO(rs.getInt("book_id"),
 												rs.getString("book_name"), 
 												rs.getString("user_id"), 
+												rs.getInt("kind"),
 												rs.getInt("hit")));
 				}
 			}
@@ -112,6 +113,7 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 					bookList.add(new BookListDTO(rs.getInt("book_id"),
 												rs.getString("book_name"), 
 												rs.getString("user_id"), 
+												rs.getInt("kind"),
 												rs.getInt("hit")));
 				}
 			}

@@ -4,9 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Refresh" content="3;url=main.word">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello</h1>
+<h1>Now Loading......</h1>
 </body>
 </html>

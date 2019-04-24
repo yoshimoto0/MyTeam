@@ -41,6 +41,7 @@ create table book_list(
 	book_id number primary key,
 	book_name varchar2(20) not null,
 	user_id varchar2(20) not null,		
+	kind number not null,
 	hit number default 0
 	
 );
@@ -88,6 +89,9 @@ create table notice(
 	
 );
 
+drop sequence notice_num;
+create sequence notice_num;
+
 drop table qna;
 
 create table qna(
@@ -101,3 +105,5 @@ create table qna(
 	read number default 0 not null
 );
 
+drop sequence qna_num;
+create sequence qna_num;
