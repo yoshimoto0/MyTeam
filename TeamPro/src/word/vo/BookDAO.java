@@ -10,25 +10,28 @@ import java.util.ArrayList;
 
 public class BookDAO {
   
-	public void createWordBook(BookListDTO book) {	// 새 단어장 만들기
+	public int createWordBook(BookListDTO book) {	// 새 단어장 만들기
 		
 		String sql = "insert into book_list values(book_id.nextval,?,?,?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		
+		int res = 0;
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_name());
 			pstmt.setString(2, book.getUserId());
 			pstmt.setInt(3, book.getHit());
-			pstmt.executeUpdate();
+			res = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
 			close(conn, pstmt, null);
 		}
+		return res;
 	}
 	
 	public void addWordToBook(BookDTO book) { // 단어장에 단어 등록
@@ -146,9 +149,9 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 		return res;
 	}
 
-	public ArrayList<WordBookDTO> viewWordBook(String userID, String BookName){ 	// 단어장 보기
+	public ArrayList<WordBookDTO> viewWordBook(String userID, int book_id){ 	// 단어장 보기
 		
-		String sql = "select book.wordNum, word, meaning, star from book, word where user_id = ? and name = ? and word.num = (select wordnum from book where ";
+		String sql = "select book.wordNum, word, meaning, star from book, word where user_id = ? and book_id = ? and book.wordnum = word.wordnum";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -160,11 +163,11 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userID);
-			pstmt.setString(2, BookName);
+			pstmt.setInt(2, book_id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				wordbook = new  ArrayList<WordBookDTO> ();
+				wordbook = new ArrayList<WordBookDTO>();
 				while(rs.next()) {
 					wordbook.add(new WordBookDTO(rs.getInt("wordNum"), 
 											rs.getString("word"), 
@@ -183,7 +186,49 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 	
 	public void deleteWordBook(int book_id) {
 		
-		String 
+		String sql = " delete from book where book_id = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		ArrayList<WordBookDTO> wordbook = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			close(conn, pstmt, null);
+		}
+		
 	}
-	  
+	
+	public void deleteBook(int book_id) {
+		
+		String sql = " delete from book_list where book_id = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		ArrayList<WordBookDTO> wordbook = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, book_id);
+			pstmt.executeQuery();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			close(conn, pstmt, null);
+		}
+		
+	}	  
+	
+	
 }

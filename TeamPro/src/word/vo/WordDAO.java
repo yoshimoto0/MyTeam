@@ -91,17 +91,18 @@ public class WordDAO {
 		return kindList;	
 	}
 	
-	
-	/*public ArrayList<WordDTO> selectWordList() {
+	public ArrayList<WordDTO> getAllWord() {
 		
 		String sql = "select * from word";
 		
+		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		ArrayList<WordDTO> wordList = null;
 		
 		try {
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -123,8 +124,6 @@ public class WordDAO {
 		}
 		
 		return wordList;
-	}*/
+	}
 	
-	
-
 }
