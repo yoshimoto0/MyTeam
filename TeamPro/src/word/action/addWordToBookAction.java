@@ -15,9 +15,9 @@ public class addWordToBookAction implements Action {
 		HttpSession session = request.getSession();
 		int wordnum = Integer.parseInt("wordNum");
 		
-		BookDTO dto = new BookDTO((String)session.getAttribute("user_id"), wordnum, (String)session.getAttribute("book_id"),0);
+//		BookDTO dto = new BookDTO((String)session.getAttribute("user_id"), wordnum, (String)session.getAttribute("book_id"),0);
 		
-		return ;
+//		return ;
 	}
 
 }
