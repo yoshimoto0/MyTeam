@@ -57,9 +57,12 @@ create table kind(
 	kind_name varchar2(50) not null
 );
 
-drop sequence kind_id;
-create sequence kind_id;
+drop sequence kind_id_seq;
+create sequence kind_id_seq;
 
+insert into kind values(kind_id_seq.nextval, 'eng');
+insert into kind values(kind_id_seq.nextval, 'jap');
+insert into kind values(kind_id_seq.nextval, 'info');
 
 drop table grade;
 create table grade(    
@@ -87,15 +90,8 @@ create table notice(
 	
 );
 
-<<<<<<< HEAD
 drop sequence notice_num;
 create sequence notice_num;
-
-drop table qna;
-=======
-drop sequence notice_id;
-create sequence notice_id;
->>>>>>> branch 'master' of https://github.com/This6pain/MyTeam.git
 
 
 drop table qna;
@@ -109,11 +105,5 @@ create table qna(
 	read number default 0 not null
 );
 
-<<<<<<< HEAD
 drop sequence qna_num;
 create sequence qna_num;
-=======
-drop sequence qna_id;
-create sequence qna_id;
-
->>>>>>> branch 'master' of https://github.com/This6pain/MyTeam.git

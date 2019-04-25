@@ -69,7 +69,7 @@ public class WordDAO {
 		ResultSet rs = null;
 		
 		ArrayList<KindDTO> kindList = null;
-		KindDTO kind = null;
+
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -77,10 +77,9 @@ public class WordDAO {
 			
 			if(rs.next()) {
 				kindList = new ArrayList<KindDTO>();
-				
-				while(rs.next()) {
-					kindList.add(new KindDTO(rs.getInt("kind_id"), rs.getString("kind")));
-				}
+				do {
+					kindList.add(new KindDTO(rs.getInt("kind_id"), rs.getString("kind_name")));
+				}while(rs.next());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

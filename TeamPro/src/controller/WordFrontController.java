@@ -14,7 +14,7 @@ import word.action.AddNewWordAction;
 import word.action.DeleteWordBookAction;
 import word.action.SearchMainWordAction;
 import word.action.SearchWordAction;
-//import word.action.addWordToBookAction;
+import word.action.addWordToBookAction;
 import word.action.createWordBookAction;
 import word.action.openMainAction;
 import word.vo.ActionForward;

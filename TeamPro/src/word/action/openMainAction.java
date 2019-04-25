@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import word.svc.SearchWordService;
 import word.vo.ActionForward;
@@ -19,9 +20,12 @@ public class openMainAction implements Action {
 		ArrayList<KindDTO> kindList = new ArrayList<KindDTO>();
 		kindList = svc.getKindList();
 		
-		request.setAttribute("kindList", kindList);
 		
-		ActionForward af = new ActionForward("index.html", true);
+		HttpSession session = request.getSession();
+		
+		session.setAttribute("kindList", kindList);
+		
+		ActionForward af = new ActionForward("home.jsp", false);
 		
 		return af;
 	}
