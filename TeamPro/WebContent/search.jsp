@@ -39,39 +39,39 @@
 					<i class="fas fa-bars"></i>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarResponsive">
-					<ul class="navbar-nav ml-auto">
+										<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="home.jsp">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="MyWordBook.jsp">나의 단어장</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="study.jsp">학습하기</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link a" href="allWord.word">단어검색</a>
-						</li>
-						<c:if test="${admin_user != null }">
-							<li class="nav-item">
-								<a class="nav-link a" href="manage.html">단어관리</a>
-							</li>					
-						</c:if>
+						</li>						
 						<c:choose>
 							<c:when test="${login_user == null }">
 								<li class="nav-item">
-									<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login</a>
+									<a class="nav-link" data-toggle="modal" data-target="#myModal">Login</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Sign-up</a>
+									<a class="nav-link" data-toggle="modal" data-target="#myModal2">Sign-up</a>
 								</li>          	
 							</c:when>
 							<c:otherwise>
 								<li class="nav-item">
-									<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">My Page</a>
+									<a class="nav-link" href="viewOwnWordBook.word">나의 단어장</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Logout</a>
+									<a class="nav-link" href="study.jsp">학습하기</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link a" href="allWord.word">단어검색</a>
+								</li>
+								<c:if test="${login_user.isAdmin == 1}">
+									<li class="nav-item">
+										<a class="nav-link a" href="manage.html">단어관리</a>
+									</li>					
+								</c:if>
+								<li class="nav-item">
+									<a class="nav-link" href="updateForm.member">My Page</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="logout.member">Logout</a>
 								</li>
 							</c:otherwise>
 						</c:choose>

@@ -153,21 +153,7 @@
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item">
 							<a class="nav-link" href="home.jsp">Home</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="viewOwnWordBook.word">나의 단어장</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="study.jsp">학습하기</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link a" href="allWord.word">단어검색</a>
-						</li>
-						<c:if test="${login_user.isAdmin == 1}">
-							<li class="nav-item">
-								<a class="nav-link a" href="manage.html">단어관리</a>
-							</li>					
-						</c:if>
+						</li>						
 						<c:choose>
 							<c:when test="${login_user == null }">
 								<li class="nav-item">
@@ -178,6 +164,20 @@
 								</li>          	
 							</c:when>
 							<c:otherwise>
+								<li class="nav-item">
+									<a class="nav-link" href="viewOwnWordBook.word">나의 단어장</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="study.jsp">학습하기</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link a" href="allWord.word">단어검색</a>
+								</li>
+								<c:if test="${login_user.isAdmin == 1}">
+									<li class="nav-item">
+										<a class="nav-link a" href="manage.html">단어관리</a>
+									</li>					
+								</c:if>
 								<li class="nav-item">
 									<a class="nav-link" href="updateForm.member">My Page</a>
 								</li>
