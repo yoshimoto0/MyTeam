@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import word.action.Action;
 import word.action.AddNewWordAction;
+import word.action.DeleteWordBookAction;
+import word.action.SearchMainWordAction;
 import word.action.SearchWordAction;
 //import word.action.addWordToBookAction;
 import word.action.createWordBookAction;
@@ -66,8 +68,8 @@ public class WordFrontController extends HttpServlet {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}else if(command.equals("/Search.word")) {
-			action = new SearchWordAction();
+		}else if(command.equals("/SearchMain.word")) {
+			action = new SearchMainWordAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
@@ -95,28 +97,28 @@ public class WordFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/deleteWordBook.word")) {
-//			action = new AddNewWordAction();
+			action = new DeleteWordBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/viewAllWordBook.word")) {
-//			action = new AddNewWordAction();
+//			action = new ViewAllWordBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/viewOwnWordBook.word")) {
-//			action = new AddNewWordAction();
+//			action = new ViewOwnWordBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/viewWordBook.word")) {
-//			action = new AddNewWordAction();
+//			action = new ViewWordBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {

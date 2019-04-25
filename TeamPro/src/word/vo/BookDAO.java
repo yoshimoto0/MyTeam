@@ -178,54 +178,50 @@ public class BookDAO {
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			close(conn, pstmt, rs);
 		}
 		
 		return wordbook;
 	}
-	
+/*	
 	public void deleteWordBook(int book_id) {
 		
 		String sql = " delete from book where book_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-
-		ArrayList<WordBookDTO> wordbook = null;
 		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			close(conn, pstmt, null);
 		}
 		
 	}
-	
+*/	
 	public void deleteBook(int book_id) {
 		
 		String sql = " delete from book_list where book_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-
-		ArrayList<WordBookDTO> wordbook = null;
 		
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, book_id);
-			pstmt.executeQuery();
+			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			close(conn, pstmt, null);
 		}
