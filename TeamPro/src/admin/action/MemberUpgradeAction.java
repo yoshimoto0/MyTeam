@@ -13,13 +13,13 @@ public class MemberUpgradeAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward af = null;
 		HttpSession session = request.getSession();
-		String id = request.getParameter("id");
+		String user_id = request.getParameter("user_id");
 		MemberUpgradeService svc = new MemberUpgradeService();
-		int res = svc.execute(id);
+		int res = svc.execute(user_id);
 		
 		if(res>0) {
 			af = new ActionForward("#", true);
-			session.setAttribute("sussecemessage", id + "님의 계정을 관리자계정으로 업그레이드 했습니다.");
+			session.setAttribute("sussecemessage", user_id + "님의 계정을 관리자계정으로 업그레이드 했습니다.");
 		}else {
 			af = new ActionForward("#", true);
 			session.setAttribute("errormessage", "계정을 찾지 못했습니다.");			

@@ -22,12 +22,12 @@ public class SearchMainWordAction implements Action {
 		ArrayList<WordDTO> wordList = new ArrayList<WordDTO>();
 		wordList = svc.getWordList(word);
 		
-		ArrayList<BookListDTO> wordBookList = new ArrayList<BookListDTO>();
-		wordBookList = svc.getWordBookList(wordList);
+//		ArrayList<BookListDTO> wordBookList = new ArrayList<BookListDTO>();
+//		wordBookList = svc.getWordBookList(wordList);
 		request.setAttribute("wordList", wordList);
-		request.setAttribute("wordBookList", wordBookList);
-		ActionForward af = new ActionForward("#", true);
-		return null;
+//		request.setAttribute("wordBookList", wordBookList);
+		ActionForward af = new ActionForward("home.jsp", false);
+		return af;
 	}
 
 }

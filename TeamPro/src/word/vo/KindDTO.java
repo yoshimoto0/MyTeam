@@ -3,16 +3,16 @@ package word.vo;
 public class KindDTO {
 	
 	private int kind_id;
-	private String kind;
+	private String kind_name;
 	
 	public KindDTO() {
 		
 	}
 
-	public KindDTO(int kind_id, String kind) {
+	public KindDTO(int kind_id, String kind_name) {
 		super();
 		this.kind_id = kind_id;
-		this.kind = kind;
+		this.kind_name = kind_name;
 		
 	}
 
@@ -24,12 +24,12 @@ public class KindDTO {
 		this.kind_id = kind_id;
 	}
 
-	public String getKind() {
-		return kind;
+	public String getKind_name() {
+		return kind_name;
 	}
 
-	public void setKind(String kind) {
-		this.kind = kind;
+	public void setKind_name(String kind_name) {
+		this.kind_name = kind_name;
 	}
 
 	

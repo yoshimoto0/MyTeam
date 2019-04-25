@@ -2,7 +2,7 @@ package member.vo;
 
 public class NoticeDTO {
 	
-	private int num;
+	private int notice_num;
 	private String title;   
 	private String content;
 	private String w_date;
@@ -12,21 +12,21 @@ public class NoticeDTO {
 		
 	}
 
-	public NoticeDTO(int num, String title, String content, String w_date, String writer) {
+	public NoticeDTO(int notice_num, String title, String content, String w_date, String writer) {
 		super();
-		this.num = num;
+		this.notice_num = notice_num;
 		this.title = title;
 		this.content = content;
 		this.w_date = w_date;
 		this.writer = writer;
 	}
 
-	public int getNum() {
-		return num;
+	public int getNotice_num() {
+		return notice_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setNotice_num(int notice_num) {
+		this.notice_num = notice_num;
 	}
 
 	public String getTitle() {

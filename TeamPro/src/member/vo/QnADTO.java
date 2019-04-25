@@ -2,35 +2,35 @@ package member.vo;
 
 public class QnADTO {
 	
-	private int num;
+	private int qna_num;
 	private String title;   
 	private String content;
 	private String w_date;
 	private String writer;
 	private String ans;
-	private int check;
+	private int read;
 	
 	public QnADTO() {
 		
 	}
 
-	public QnADTO(int num, String title, String content, String w_date, String writer, String ans, int check) {
+	public QnADTO(int qna_num, String title, String content, String w_date, String writer, String ans, int read) {
 		super();
-		this.num = num;
+		this.qna_num = qna_num;
 		this.title = title;
 		this.content = content;
 		this.w_date = w_date;
 		this.writer = writer;
 		this.ans = ans;
-		this.check = check;
+		this.read = read;
 	}
 
-	public int getNum() {
-		return num;
+	public int getQna_num() {
+		return qna_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setQna_num(int qna_num) {
+		this.qna_num = qna_num;
 	}
 
 	public String getTitle() {
@@ -73,12 +73,12 @@ public class QnADTO {
 		this.ans = ans;
 	}
 
-	public int getCheck() {
-		return check;
+	public int getRead() {
+		return read;
 	}
 
-	public void setCheck(int check) {
-		this.check = check;
+	public void setRead(int read) {
+		this.read = read;
 	}
 	
 	

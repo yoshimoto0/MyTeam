@@ -19,8 +19,9 @@ public class createWordBookAction implements Action {
 		
 		String book_name = request.getParameter("book_name");
 		String user_id = request.getParameter("user_id");
+		int kind_id = Integer.parseInt(request.getParameter("kind_id"));
 		
-		BookListDTO dto = new BookListDTO(0,book_name, user_id, 0);
+		BookListDTO dto = new BookListDTO(0,book_name, user_id, kind_id, 0);
 		
 		int res = ws.addNewBook(dto);
 		

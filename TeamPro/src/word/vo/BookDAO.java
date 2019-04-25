@@ -12,7 +12,7 @@ public class BookDAO {
   
 	public int createWordBook(BookListDTO book) {	// 새 단어장 만들기
 		
-		String sql = "insert into book_list values(book_id.nextval,?,?,?)";
+		String sql = "insert into book_list values(book_id_seq.nextval,?,?,0)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -23,7 +23,7 @@ public class BookDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, book.getBook_name());
 			pstmt.setString(2, book.getUserId());
-			pstmt.setInt(3, book.getHit());
+
 			res = pstmt.executeUpdate();
 			
 		} catch (Exception e) {
@@ -77,6 +77,7 @@ public class BookDAO {
 					bookList.add(new BookListDTO(rs.getInt("book_id"),
 												rs.getString("book_name"), 
 												rs.getString("user_id"), 
+												rs.getInt("kind_id"),
 												rs.getInt("hit")));
 				}
 			}
@@ -90,9 +91,9 @@ public class BookDAO {
 		return bookList;
 	}
 	
-public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가지고 있는 단어장 보기
+	public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가지고 있는 단어장 보기
 		
-		String sql = "select * form book-list where user_id = ?";
+		String sql = "select * from book_list where user_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -108,12 +109,13 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 			
 			if(rs.next()) {
 				bookList = new ArrayList<BookListDTO>();
-				while(rs.next()) {
+				do{
 					bookList.add(new BookListDTO(rs.getInt("book_id"),
 												rs.getString("book_name"), 
 												rs.getString("user_id"), 
+												rs.getInt("kind_id"),
 												rs.getInt("hit")));
-				}
+				}while(rs.next());
 			}
 			
 		} catch (Exception e) {
@@ -127,7 +129,7 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 	
 	public int updateHit(int book_id) {	// 조회수 증가
 		
-		String sql = "update book_list set hit = hit + 1 where user_id = ?";
+		String sql = "update book_list set hit = hit + 1 where book_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -149,9 +151,9 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 		return res;
 	}
 
-	public ArrayList<WordBookDTO> viewWordBook(String userID, int book_id){ 	// 단어장 보기
+	public ArrayList<WordBookDTO> viewWordBook(String user_id, int book_id){ 	// 단어장 보기
 		
-		String sql = "select book.wordNum, word, meaning, star from book, word where user_id = ? and book_id = ? and book.wordnum = word.wordnum";
+		String sql = "select book.word_num, word, meaning, star from book, word where user_id = ? and book_id = ? and book.word_num = word.word_num";
 		
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -162,18 +164,18 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userID);
+			pstmt.setString(1, user_id);
 			pstmt.setInt(2, book_id);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				wordbook = new ArrayList<WordBookDTO>();
-				while(rs.next()) {
-					wordbook.add(new WordBookDTO(rs.getInt("wordNum"), 
+				do {
+					wordbook.add(new WordBookDTO(rs.getInt("word_num"), 
 											rs.getString("word"), 
 											rs.getString("meaning"), 
 											rs.getInt("star")));
-				}
+				}while(rs.next());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -222,8 +224,7 @@ public ArrayList<BookListDTO> viewOwnBookList(String user_id){	// 유저가 가�
 			e.printStackTrace();
 		}finally {
 			close(conn, pstmt, null);
-		}
-		
+		}		
 	}	  
 	
 	

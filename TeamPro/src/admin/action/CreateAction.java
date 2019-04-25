@@ -17,12 +17,10 @@ public class CreateAction implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		String id = request.getParameter("user_id");
-		String pass = request.getParameter("user_pass");
-		String user_name = request.getParameter("user_name");
-		String email = request.getParameter("email");
-		
+		String id = (String) request.getAttribute("username");
+		String pass = (String) request.getAttribute("password");
+		String nickname = (String) request.getAttribute("nickname");
+		String email = (String) request.getAttribute("e-mail");
 		ServletContext ctx = request.getServletContext();
 		String path = "/images";
 		String savePath = ctx.getRealPath(path);
@@ -33,24 +31,23 @@ public class CreateAction implements Action{
 		
 		String image = multi.getFilesystemName("image");
 
-		int favor = Integer.parseInt(request.getParameter("favor"));
-//		int isAdmin = Integer.parseInt(request.getParameter("isAdmin"));
-		MemberDTO dto = new MemberDTO(id,pass,user_name,email,image,favor,0);
+		int favor = Integer.parseInt((String) request.getAttribute("favor"));
+		int isAdmin = Integer.parseInt((String) request.getAttribute("isAdmin"));
+		MemberDTO dto = new MemberDTO(id,pass,nickname,email,image,favor,isAdmin);
 		CreateActionService svc = new CreateActionService();
 		int res = svc.execute(dto);
-//		HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		
 		
+		ActionForward af = null;
 		if(res>0) {
-//			af = new ActionForward("index.jsp",true);	
-			request.setAttribute("success_message","가입이 성공적으로 처리되었습니다.");
+			af = new ActionForward("index.jsp",true);	
+		session.setAttribute("succesemessage","가입이 성공적으로 처리되었습니다.");
 		}else {
-//			af = new ActionForward("index.jsp",true);
-			request.setAttribute("error_message","가입이 실패하였습니다..");
-		}
+			af = new ActionForward("index.jsp",true);
+			session.setAttribute("errormessage","가입이 실패하였습니다..");
 		
-		ActionForward af = new ActionForward("index.jsp",true);
-		return af;
+		}return af;
 	}
 
 }

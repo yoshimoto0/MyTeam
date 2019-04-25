@@ -22,7 +22,7 @@ public class SearchMainWordService {
 		ArrayList<BookListDTO> BookList = new ArrayList<BookListDTO>(); 
 		
 		for(int i = 0; i < wordList.size(); i++) {
-			int num = wordList.get(i).getNum();
+			int num = wordList.get(i).getWord_num();
 		}
 		
 		return BookList;

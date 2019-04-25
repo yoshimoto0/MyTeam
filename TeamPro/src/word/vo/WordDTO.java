@@ -2,29 +2,29 @@ package word.vo;
 
 public class WordDTO {
 	
-	private int num;
+	private int word_num;
 	private String word;
 	private String meaning;
-	private int kind;
+	private int kind_id;
 	
 	public WordDTO() {
 		
 	}
 
-	public WordDTO(int num, String word, String meaning, int kind) {
+	public WordDTO(int word_num, String word, String meaning, int kind_id) {
 		super();
-		this.num = num;
+		this.word_num = word_num;
 		this.word = word;
 		this.meaning = meaning;
-		this.kind = kind;
+		this.kind_id = kind_id;
 	}
 
-	public int getNum() {
-		return num;
+	public int getWord_num() {
+		return word_num;
 	}
 
-	public void setNum(int num) {
-		this.num = num;
+	public void setWord_num(int word_num) {
+		this.word_num = word_num;
 	}
 
 	public String getWord() {
@@ -43,12 +43,12 @@ public class WordDTO {
 		this.meaning = meaning;
 	}
 
-	public int getKind() {
-		return kind;
+	public int getKind_id() {
+		return kind_id;
 	}
 
-	public void setKind(int kind) {
-		this.kind = kind;
+	public void setKind_id(int kind_id) {
+		this.kind_id = kind_id;
 	}
 	
 	

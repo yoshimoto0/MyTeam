@@ -17,13 +17,12 @@ public class addWordToBookAction implements Action {
 		int wordnum = Integer.parseInt(request.getParameter("wrodnum"));
 		
 		BookDTO dto = new BookDTO((String)session.getAttribute("user_id"), wordnum, Integer.parseInt((String)session.getAttribute("book_id")),0);
-		
+
 		addWordToBookService svc = new addWordToBookService();
 		svc.addWordToBook(dto);
 		
 		ActionForward af = new ActionForward("#", true);
 		return af;
-
 	}
 
 }

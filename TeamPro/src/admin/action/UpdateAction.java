@@ -39,8 +39,8 @@ public class UpdateAction implements Action {
 		
 		ActionForward af = null;
 		MemberDTO dto = (MemberDTO) session.getAttribute("member");
-		if(user_pass != null)dto.setUser_pass(user_pass);;
-		if(user_name != null)dto.setUser_name(user_name);;
+		if(pass != null)dto.setPass(pass);
+		if(username != null)dto.setUserName(username);
 		if(email != null)dto.setEmail(email);
 		if(image != null)dto.setImage(image);
 		if(favor != dto.getFavor())dto.setFavor(favor); 
