@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 
@@ -81,58 +80,149 @@
   </header>
 
   <!-- Post Content -->
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="carousel slide" id="carousel-6835">
-					<div class="carousel-inner"">
-						<div class="carousel-item active">
-							<img class="d-block w-100" src="https://www.layoutit.com/img/sports-q-c-1600-500-1.jpg" />
-							<div class="carousel-caption" style="top: 0; bottom: auto;">
-								<div class="text-right">
-									<a class="fas fa-star" href="#"></a>
-								</div>
-								<h4>
-									단어명
-								</h4>
-								<p class="text-left">
-									단어 뜻은 여기에 로드
-								</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				 
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="navbar-nav">
+						<li class="nav-item dropdown">
+							 <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Dropdown link</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+								 <a class="dropdown-item" href="#">Action</a> <a class="dropdown-item" href="#">Another action</a> <a class="dropdown-item" href="#">Something else here</a>
+								<div class="dropdown-divider">
+								</div> <a class="dropdown-item" href="#">Separated link</a>
 							</div>
-						</div>
-						<div class="carousel-item">
-							<img class="d-block w-100" src="https://www.layoutit.com/img/sports-q-c-1600-500-2.jpg" />
-							<div class="carousel-caption" style="top: 0; bottom: auto;">
-								<div class="text-right">
-									<a class="fas fa-star" href="#"></a>
-								</div>
-								<h4>
-									단어명
-								</h4>
-								<p class="text-left">
-									단어 뜻은 여기에 로드
-								</p>
-							</div>
-						</div>
-						<div class="carousel-item">
-							<img class="d-block w-100" src="https://www.layoutit.com/img/sports-q-c-1600-500-3.jpg" />
-							<div class="carousel-caption" style="top: 0; bottom: auto;">
-								<div class="text-right">
-									<a class="fas fa-star" href="#"></a>
-								</div>
-								<h4>
-									단어명
-								</h4>
-								<p class="text-left">
-									단어 뜻은 여기에 로드
-								</p>
-							</div>
-						</div>
-					</div> <a class="carousel-control-prev" href="#carousel-6835" data-slide="prev"><span class="carousel-control-prev-icon"></span> <span class="sr-only">Previous</span></a> <a class="carousel-control-next" href="#carousel-6835" data-slide="next"><span class="carousel-control-next-icon"></span> <span class="sr-only">Next</span></a>
+						</li>
+					</ul>
+					<form class="form-inline">
+						<input class="form-control mr-sm-2" type="text" /> 
+						<button class="btn btn-primary my-2 my-sm-0" type="submit">
+							Search
+						</button>
+					</form>
 				</div>
-			</div>
+			</nav>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							#
+						</th>
+						<th>
+							Product
+						</th>
+						<th>
+							Payment Taken
+						</th>
+						<th>
+							Status
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							1
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							01/04/2012
+						</td>
+						<td>
+							Default
+						</td>
+					</tr>
+					<tr class="table-active">
+						<td>
+							1
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							01/04/2012
+						</td>
+						<td>
+							Approved
+						</td>
+					</tr>
+					<tr class="table-success">
+						<td>
+							2
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							02/04/2012
+						</td>
+						<td>
+							Declined
+						</td>
+					</tr>
+					<tr class="table-warning">
+						<td>
+							3
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							03/04/2012
+						</td>
+						<td>
+							Pending
+						</td>
+					</tr>
+					<tr class="table-danger">
+						<td>
+							4
+						</td>
+						<td>
+							TB - Monthly
+						</td>
+						<td>
+							04/04/2012
+						</td>
+						<td>
+							Call in to confirm
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<nav>
+				<ul class="pagination">
+					<li class="page-item">
+						<a class="page-link" href="#">Previous</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">1</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">2</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">3</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">4</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">5</a>
+					</li>
+					<li class="page-item">
+						<a class="page-link" href="#">Next</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
 	</div>
+</div>
 
   <hr>
 

@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <meta charset="utf-8">
@@ -17,6 +18,7 @@
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template -->
+  <link href="vendor/custom/search.css" rel="stylesheet" type="text/css">
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -45,11 +47,30 @@
             <a class="nav-link" href="MyWordBook.jsp">나의 단어장</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="study.jsp">학습하기</a>
+			<a class="nav-link" href="study.jsp">학습하기</a>
           </li>
           <li class="nav-item">
+
             <a class="nav-link a" href="search.jsp">단어검색</a>
           </li>
+          <c:choose>
+          	<c:when test="${login_user == null }">
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Sign-up</a>
+	          </li>          	
+          	</c:when>
+          	<c:otherwise>
+          		<li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">My Page</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Logout</a>
+	          </li>
+          	</c:otherwise>
+          </c:choose>
         </ul>
       </div>
     </div>
@@ -60,6 +81,43 @@
     <div class="overlay"></div>
   </header>
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+		<div class="modal-content container" style="padding: 0.5rem 1rem;">
+             <div class="row">
+                 <div class="col-md-12">
+                 	 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 	 <h2 class="text-center">단어등록</h2>
+                 	 <form action="addNewWord.word" method="post">
+	                     <div class="form-group">
+	                         <input type="text" class="form-control" placeholder="Name" name = "word" required />
+	                     </div>
+	                     <div class="form-group">
+	                         <textarea class="form-control" placeholder="Detail" rows="5" name = "meaning" required></textarea>
+	                     </div>
+	                     <div class="form-group">
+	                         <label for="category">
+	                             Category</label>
+	                         <select class="form-control" id="category" name="kind_id">
+		                         <c:forEach var="kind" items="${kindList}" varStatus="status">
+		                         	<option value="${kind.kind_id }">${kind.kind_name }</option>
+		                         </c:forEach>
+	                         </select>
+	                     </div>
+	                     <div class="form-group text-right">
+							<button class="btn btn-primary" type="submit">
+									등록
+							</button>
+						 </div>
+                 	 </form>
+                 </div>
+             </div>
+		</div>
+      
+    </div>
+  </div>
+  
   <!-- Main Content -->
 
 <div class="container-fluid">
@@ -88,11 +146,8 @@
 			</nav>
 			
 			<div class="buttonGroup">
-				<button class="btn btn-primary my-2 my-sm-0" type="submit">
+				<button class="btn btn-primary my-2 my-sm-0" data-toggle="modal" data-target="#myModal">
 						단어 등록
-				</button>
-				<button class="btn btn-primary my-2 my-sm-0" type="submit">
-						단어장 만들기
 				</button>
 			</div>
 			
@@ -103,31 +158,38 @@
 							#
 						</th>
 						<th>
-							Product
+							Word
 						</th>
 						<th>
-							Payment Taken
+							Meaning
 						</th>
 						<th>
-							Status
+							Category
 						</th>
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="word" items="${wordList }" varStatus="wordStatus">
 					<tr>
 						<td>
-							1
+							<input type = "checkbox" id = "export" name = "export" value = "${word.num}"/>
 						</td>
 						<td>
-							TB - Monthly
+							${word.word}
 						</td>
 						<td>
-							01/04/2012
+							${word.meaning}
 						</td>
 						<td>
-							Default
+							<c:forEach var="kind" items="${kindList }" varStatus="status">
+								<c:if test="${word.kind == kind.kind_id }">
+									${kind.kind_name }		
+								</c:if>
+							</c:forEach>
 						</td>
 					</tr>
+				</c:forEach>
+				<!-- 
 					<tr class="table-active">
 						<td>
 							1
@@ -183,7 +245,7 @@
 						<td>
 							Call in to confirm
 						</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 			<nav>
@@ -222,32 +284,6 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <ul class="list-inline text-center">
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#">
-                <span class="fa-stack fa-lg">
-                  <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
           <p class="copyright text-muted">Copyright &copy; Your Website 2019</p>
         </div>
       </div>
@@ -268,3 +304,4 @@
 </body>
 
 </html>
+

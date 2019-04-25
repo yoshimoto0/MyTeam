@@ -118,8 +118,7 @@ public class WordDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
-			close(pstmt);
+			close(conn,pstmt, rs);
 		}
 		
 		return wordList;
@@ -154,12 +153,44 @@ public class WordDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(rs);
-			close(pstmt);
+			close(conn,pstmt, rs);
 		}
 		
 		return wordList;
 		
+	}
+
+	public ArrayList<WordDTO> allWord() {
+		String sql = "select * from word";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		ArrayList<WordDTO> wordList = null;
+		
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				wordList = new ArrayList<WordDTO>();
+				do {
+					wordList.add(new WordDTO(rs.getInt("num"),
+											rs.getString("word"),
+											rs.getString("meaning"),
+											rs.getInt("kind")));
+				}while(rs.next());
+			}
+						
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close(conn,pstmt, rs);
+		}
+		
+		return wordList;
 	}
 
 }

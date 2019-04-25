@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import word.action.Action;
 import word.action.AddNewWordAction;
+import word.action.AllWordAction;
 import word.action.DeleteWordBookAction;
 import word.action.SearchMainWordAction;
 import word.action.SearchWordAction;
@@ -120,6 +121,13 @@ public class WordFrontController extends HttpServlet {
 			}
 		}else if(command.equals("/viewWordBook.word")) {
 //			action = new ViewWordBookAction();
+			try {
+				af = action.execute(request, response);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}else if(command.equals("/allWord.word")) {
+			action = new AllWordAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {

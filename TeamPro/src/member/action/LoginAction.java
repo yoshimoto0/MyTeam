@@ -12,8 +12,8 @@ public class LoginAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
+		String id = request.getParameter("username");
+		String pass = request.getParameter("password");
 		LoginService svc = new LoginService();
 		HttpSession session = request.getSession();
 		ActionForward af = null;

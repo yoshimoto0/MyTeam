@@ -19,10 +19,10 @@ public class UpdateAction implements Action {
 		UpdateService svc = new UpdateService();
 		HttpSession session = request.getSession();
 		
-		String id = (String) request.getAttribute("id");
-		String pass = (String) request.getAttribute("pass");
-		String username = (String) request.getAttribute("nickname");
-		String email = (String) request.getAttribute("email");
+		String id = request.getParameter("username");
+		String pass = request.getParameter("password");
+		String username = request.getParameter("nickname");
+		String email = request.getParameter("e-mail");
 		
 		ServletContext ctx = request.getServletContext();
 		String path = "/images";

@@ -46,6 +46,8 @@ insert into word values(word_num.nextval, 'vv','vvvv',1);
 insert into word values(word_num.nextval, 'ww','aaaa',2);
 insert into word values(word_num.nextval, 'xx','aaaa',3);
 
+select * from WORD;
+
 drop sequence word_num;
 create sequence word_num;
 

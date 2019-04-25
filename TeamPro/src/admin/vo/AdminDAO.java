@@ -12,7 +12,7 @@ import word.vo.WordDTO;
 public class AdminDAO {
 
 	public int AddNotice(NoticeDTO dto) {
-		String sql = "inserte into notice values(num.nextval,?,?,sysdate,?)";
+		String sql = "insert into notice values(num.nextval,?,?,sysdate,?)";
 		int res = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -27,8 +27,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
@@ -47,8 +46,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
@@ -67,14 +65,13 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
 
 	public int addKind(String kind) {
-		String sql = "inserte into kind values(kind_id.nextval,?)";
+		String sql = "insert into kind values(kind_id.nextval,?)";
 		int res = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -87,8 +84,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
@@ -108,8 +104,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
@@ -152,9 +147,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
-			close(rs);
+			close(conn,pstmt, rs);
 		}
 		
 		return list;
@@ -187,9 +180,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
-			close(rs);
+			close(conn,pstmt, rs);
 		}
 		
 		return list;
@@ -211,8 +202,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}
@@ -232,8 +222,7 @@ public class AdminDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}					
 		return res;
 	}

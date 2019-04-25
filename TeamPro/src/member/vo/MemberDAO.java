@@ -9,7 +9,7 @@ import static db.JdbcUtils.*;
 public class MemberDAO {
 
 	public int createMember(MemberDTO dto) {
-		String sql = "interte into member value(?,?,?,?,?,?,?)";
+		String sql = "insert into member values(?,?,?,?,?,?,?)";
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		int res = 0;
@@ -28,8 +28,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}
 		
 		return res;
@@ -58,9 +57,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
-			close(rs);
+			close(conn, pstmt, rs);
 		}		
 		return dto;		
 	}
@@ -89,9 +86,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
-			close(rs);
+			close(conn,pstmt, rs);
 		}		
 		return list;		
 	}
@@ -115,8 +110,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
+			close(conn,pstmt, null);
 		}
 		
 		return res;
@@ -146,9 +140,7 @@ public class MemberDAO {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
-			close(conn);
-			close(pstmt);
-			close(rs);
+			close(conn,pstmt, rs);
 		}		
 		return dto;
 	}

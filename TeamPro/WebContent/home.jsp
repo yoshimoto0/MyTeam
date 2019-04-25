@@ -39,7 +39,7 @@
 				<h3>Sign In</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="#" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -83,7 +83,7 @@
 				<h3>Sign Up</h3>
 			</div>
 			<div class="card-body">
-				<form>
+				<form action="#" method="post">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -152,15 +152,27 @@
 			<a class="nav-link" href="study.jsp">학습하기</a>
           </li>
           <li class="nav-item">
-
-            <a class="nav-link a" href="search.jsp">단어검색</a>
+			<a class="nav-link a" href="allWord.word">단어검색</a>
+            <!-- <a class="nav-link a" href="search.jsp">단어검색</a> -->
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">sign-up</a>
-          </li>
+          <c:choose>
+          	<c:when test="${login_user == null }">
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Sign-up</a>
+	          </li>          	
+          	</c:when>
+          	<c:otherwise>
+          		<li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">My Page</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Logout</a>
+	          </li>
+          	</c:otherwise>
+          </c:choose>
         </ul>
       </div>
     </div>

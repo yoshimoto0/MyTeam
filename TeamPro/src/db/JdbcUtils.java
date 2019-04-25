@@ -40,7 +40,7 @@ public class JdbcUtils {
 		}
 	}
 	
-	public static void close(Connection conn) {
+	/*public static void close(Connection conn) {
 		try {
 			conn.close();
 		} catch (Exception e) {
@@ -62,7 +62,7 @@ public class JdbcUtils {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public static void commit(Connection conn) {
 		try {

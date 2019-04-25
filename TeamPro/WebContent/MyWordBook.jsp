@@ -46,11 +46,30 @@
             <a class="nav-link" href="MyWordBook.jsp">나의 단어장</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="study.jsp">학습하기</a>
+			<a class="nav-link" href="study.jsp">학습하기</a>
           </li>
           <li class="nav-item">
+
             <a class="nav-link a" href="search.jsp">단어검색</a>
           </li>
+          <c:choose>
+          	<c:when test="${login_user == null }">
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">Login</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Sign-up</a>
+	          </li>          	
+          	</c:when>
+          	<c:otherwise>
+          		<li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal">My Page</a>
+	          </li>
+	          <li class="nav-item">
+	            <a class="nav-link" href="#" data-toggle="modal" data-target="#myModal2">Logout</a>
+	          </li>
+          	</c:otherwise>
+          </c:choose>
         </ul>
       </div>
     </div>
@@ -84,6 +103,11 @@
 				<p>
 					안녕하세요. User입니다.
 				</p>
+				<div class="text-right" style="padding: 0.5rem 1rem;">
+					<button class="btn btn-primary my-2 my-sm-0" type="submit">
+							단어장 만들기
+					</button>
+				</div>
 			</div>
 		</div>
 		<div class="row">
@@ -221,31 +245,6 @@
 						</div>
 					</div>
 				</div>
-				<nav>
-					<ul class="pagination">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">4</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">5</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
-				</nav>
 			</div>
 		</div>
 	</div>

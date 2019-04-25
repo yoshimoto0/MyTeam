@@ -18,7 +18,7 @@ public class AddNewWordAction implements Action {
 		
 		String word = request.getParameter("word");
 		String meaning = request.getParameter("meaning");
-		int kind = Integer.parseInt(request.getParameter("kind"));
+		int kind = Integer.parseInt(request.getParameter("kind_id"));
 		
 		WordDTO dto = new WordDTO(0,word, meaning, kind);
 		
@@ -27,7 +27,7 @@ public class AddNewWordAction implements Action {
 		ActionForward af = null;				
 
 		if(res > 0) {
-			af = new ActionForward("#", true);
+			af = new ActionForward("search.jsp", true);
 		}else {
 			response.setContentType("text/html; charset = utf-8");
 			PrintWriter out = response.getWriter();

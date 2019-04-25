@@ -17,10 +17,10 @@ public class CreateAction implements Action{
 	
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = (String) request.getAttribute("id");
-		String pass = (String) request.getAttribute("pass");
+		String id = (String) request.getAttribute("username");
+		String pass = (String) request.getAttribute("password");
 		String nickname = (String) request.getAttribute("nickname");
-		String email = (String) request.getAttribute("email");
+		String email = (String) request.getAttribute("e-mail");
 		ServletContext ctx = request.getServletContext();
 		String path = "/images";
 		String savePath = ctx.getRealPath(path);
@@ -41,10 +41,10 @@ public class CreateAction implements Action{
 		
 		ActionForward af = null;
 		if(res>0) {
-			af = new ActionForward("#",true);	
+			af = new ActionForward("/search.html",true);	
 		session.setAttribute("succesemessage","가입이 성공적으로 처리되었습니다.");
 		}else {
-			af = new ActionForward("#",true);
+			af = new ActionForward("/search.html",true);
 			session.setAttribute("errormessage","가입이 실패하였습니다..");
 		
 		}return af;
