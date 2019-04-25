@@ -14,6 +14,7 @@ import word.action.AddNewWordAction;
 import word.action.DeleteWordBookAction;
 import word.action.SearchMainWordAction;
 import word.action.SearchWordAction;
+import word.action.ViewOwnWordBookAction;
 import word.action.addWordToBookAction;
 import word.action.createWordBookAction;
 import word.action.openMainAction;
@@ -111,7 +112,7 @@ public class WordFrontController extends HttpServlet {
 				e.printStackTrace();
 			}
 		}else if(command.equals("/viewOwnWordBook.word")) {
-//			action = new ViewOwnWordBookAction();
+			action = new ViewOwnWordBookAction();
 			try {
 				af = action.execute(request, response);
 			} catch (Exception e) {
