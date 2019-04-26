@@ -199,12 +199,10 @@
 			  		<div class="col-lg-8 col-md-10 mx-auto">
 					    <div class="site-heading">
 							<div class="d-flex justify-content-center h-100">
-								<div class="searchbar">
-									<form action="SearchMain.word" class="searchbar">
+									<form action="SearchMain.word" method="post" class="searchbar" id="search_form">
 										<input class="search_input" type="text" name="word" placeholder="Word Search...">
-										<i class="fas fa-search"><input type="submit" class="search_icon"></i>
+										<a href="javascript:{}" onclick="document.getElementById('search_form').submit();" class="search_icon"><i class="fas fa-search"></i></a>
 									</form>
-								</div>
 							</div>
 						</div>
 					</div>
