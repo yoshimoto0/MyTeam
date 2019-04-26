@@ -7,7 +7,7 @@ public class SearchService {
 
 	public MemberDTO execute(String email) {
 		MemberDAO dao = new MemberDAO();
-		MemberDTO dto = dao.seachMember(email);
+		MemberDTO dto = dao.searchMember(email);
 		return dto;
 	}
 	

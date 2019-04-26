@@ -1,3 +1,19 @@
+drop table kind;
+create table kind(
+	kind_id number primary key,
+	kind_name varchar2(50) not null
+);
+
+drop sequence kind_id_seq;
+create sequence kind_id_seq;
+
+insert into kind values(kind_id_seq.nextval, '영어');
+insert into kind values(kind_id_seq.nextval, 'JLPT 1급');
+insert into kind values(kind_id_seq.nextval, '정보처리기사');
+
+select * from kind;
+
+
 drop table member;
 create table member(
 	user_id varchar2(20) primary key,
@@ -17,21 +33,6 @@ insert into member values('aaa','1234','aaa','aaa.jpg','email@email.com',1,0);
 insert into member values('bbb','1234','bbb','bbb.jpg','email@email.com',1,0);
 insert into member values('ccc','1234','ccc','ccc.jpg','email@email.com',1,0);
 
-drop table kind;
-create table kind(
-	kind_id number primary key,
-	kind_name varchar2(50) not null
-);
-
-drop sequence kind_id_seq;
-create sequence kind_id_seq START WITH 0 MINVALUE 0;
-
-insert into kind values(kind_id_seq.nextval, '영어');
-insert into kind values(kind_id_seq.nextval, 'JLPT 1급');
-insert into kind values(kind_id_seq.nextval, '정보처리기사');
-
-select * from kind;
-
 drop table word;
 create table word(
 
@@ -44,7 +45,7 @@ create table word(
 );
 
 drop sequence word_num_seq;
-create sequence word_num_seq START WITH 0 MINVALUE 0;
+create sequence word_num_seq;
 
 insert into word values(word_num_seq.nextval, 'aa','aaaa',1);
 insert into word values(word_num_seq.nextval, 'bb','bbbb',2);
@@ -97,7 +98,7 @@ create table book_list(
 
 
 drop sequence book_id_seq;
-create sequence book_id_seq START WITH 0 MINVALUE 0;
+create sequence book_id_seq;
 
 insert into book_list values(book_id_seq.nextval,'a-aaa', 'aaa', 1,0);
 insert into book_list values(book_id_seq.nextval,'a-bbb', 'aaa', 2,0);

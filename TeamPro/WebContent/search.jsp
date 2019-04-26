@@ -175,7 +175,7 @@
 							<c:forEach var="word" items="${wordList }" varStatus="wordStatus">
 								<tr>
 									<td>
-										<input type = "checkbox" id = "export" name = "export" value = "${word.num}"/>
+										<input type = "checkbox" id = "export" name = "export" value = "${word.word_num}"/>
 									</td>
 									<td>
 										${word.word}
@@ -185,7 +185,7 @@
 									</td>
 									<td>
 										<c:forEach var="kind" items="${kindList }" varStatus="status">
-											<c:if test="${word.kind == kind.kind_id }">
+											<c:if test="${word.kind_id == kind.kind_id }">
 												${kind.kind_name }		
 											</c:if>
 										</c:forEach>

@@ -35,6 +35,7 @@ public class MemberDAO {
 		
 		return res;
 	}
+	
 	public MemberDTO searchMember(String email) {
 		
 		String sql = "select * from member where email = ?";
@@ -104,7 +105,6 @@ public class MemberDAO {
 		ResultSet rs = null;
 		
 		MemberDTO dto = null;
-		System.out.print(user_id);
 			
 		try {
 			conn = getConnection();

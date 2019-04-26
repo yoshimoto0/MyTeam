@@ -7,7 +7,7 @@ public class UpdateService {
 
 	public int execute(MemberDTO dto) {
 		MemberDAO dao = new MemberDAO();
-		int res = dao.UpdateMember(dto);
+		int res = dao.Update(dto);
 		return res;
 	}
 

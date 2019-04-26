@@ -52,8 +52,11 @@ public class UpdateAction implements Action {
 			af = new ActionForward("#", false);
 			session.removeAttribute("member");
 			session.setAttribute("member", dto);
+		}else {
+			
+			session.setAttribute("ErrorMessage", "일치하는 아이디를 찾지 못하였습니다.");
 		}
-		return null;
+		return af;
 	}
 
 }
