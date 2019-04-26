@@ -130,9 +130,9 @@
 								</select>
 							</div>
 						</c:if>
-							<div class="form-group">
-								<input type="submit" value="Sign Up" class="btn float-right login_btn">
-							</div>
+						<div class="form-group">
+							<input type="submit" value="Sign Up" class="btn float-right login_btn">
+						</div>
 						</form>
 					</div>
 					<div class="card-footer">
@@ -199,10 +199,10 @@
 			  		<div class="col-lg-8 col-md-10 mx-auto">
 					    <div class="site-heading">
 							<div class="d-flex justify-content-center h-100">
-									<form action="SearchMain.word" method="post" class="searchbar" id="search_form">
-										<input class="search_input" type="text" name="word" placeholder="Word Search...">
-										<a href="javascript:{}" onclick="document.getElementById('search_form').submit();" class="search_icon"><i class="fas fa-search"></i></a>
-									</form>
+								<form action="SearchMain.word" method="post" class="searchbar" id="search_form">
+									<input class="search_input" type="text" name="word" placeholder="Word Search...">
+									<a href="javascript:{}" onclick="document.getElementById('search_form').submit();" class="search_icon"><i class="fas fa-search"></i></a>
+								</form>
 							</div>
 						</div>
 					</div>

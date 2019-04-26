@@ -95,7 +95,7 @@
 							<h2 class="text-center">단어등록</h2>
 							<form action="addNewWord.word" method="post">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Name" name = "word" required />
+									<input type="text" class="form-control" placeholder="Word" name = "word" required />
 								</div>
 								<div class="form-group">
 									<textarea class="form-control" placeholder="Detail" rows="5" name = "meaning" required></textarea>
@@ -140,7 +140,7 @@
 								</li>
 							</ul>
 							<form class="form-inline">
-								<input class="form-control mr-sm-2" type="text" /> 
+								<input class="form-control mr-sm-2" type="text" placeholder="Keyword" name="Keyword"/> 
 								<button class="btn btn-primary my-2 my-sm-0" type="submit">
 									Search
 								</button>
