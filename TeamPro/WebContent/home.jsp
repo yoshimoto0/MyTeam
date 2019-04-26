@@ -62,10 +62,10 @@
 					</div>
 					<div class="card-footer">
 						<div class="d-flex justify-content-center links">
-							Don't have an account?<a href="#" class="text-success">Sign Up</a>
+							Don't have an account?<a href="#myModal2" data-toggle="modal" data-target="#myModal2" class="text-success">Sign Up</a>							   
 						</div>
 						<div class="d-flex justify-content-center">
-							<a href="#" class="text-success">Forgot your password?</a>
+							<a href="searchForm.member" class="text-success">Forgot your id? or password?</a>
 						</div>
 					</div>
 				</div>		    
@@ -165,7 +165,7 @@
 							</c:when>
 							<c:otherwise>
 								<li class="nav-item">
-									<a class="nav-link" href="viewOwnWordBook.word">나의 단어장</a>
+									<a class="nav-link" href="viewOwnWordBook.word">My Page</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="study.jsp">학습하기</a>
@@ -176,11 +176,11 @@
 								<c:if test="${login_user.isAdmin == 1}">
 									<li class="nav-item">
 										<a class="nav-link a" href="manage.html">단어관리</a>
-									</li>					
+									</li>
+									<li class="nav-item">
+	            						<a class="nav-link" href="adminPage.jsp" >admin page</a>
+	            					</li>					
 								</c:if>
-								<li class="nav-item">
-									<a class="nav-link" href="updateForm.member">My Page</a>
-								</li>
 								<li class="nav-item">
 									<a class="nav-link" href="logout.member">Logout</a>
 								</li>

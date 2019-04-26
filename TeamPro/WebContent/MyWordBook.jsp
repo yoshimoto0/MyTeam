@@ -4,7 +4,63 @@
     
 <!DOCTYPE html>
 <html>
-
+<!-- Modal memberupdate -->
+		<div class="modal fade" id="myModal2" role="dialog">
+			<div class="modal-dialog">
+		  	
+				<div class="modal-content card" style="width: 80%; height: 80%;">
+				<div class="card-header">
+					<h3>개인정보 수정</h3>
+				</div>
+				<div class="card-body">
+					<form action="updateAction.member" method="post" enctype="multipart/form-data">
+						<h6>빈칸 입력시에는 정보변경을 하지 않고 입력한 정보만 변경되게 됩니다.</h6>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<input type="password" class="form-control" name = "user_pass" placeholder="password" required>
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">				
+								<span class="input-group-text"><i class="fas fa-at"></i></span>
+							</div>
+							<input type="text" class="form-control" name = "user_name" placeholder="User Name" required>						
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">				
+								<span class="input-group-text"><i class="fas fa-at"></i></span>
+							</div>
+							<input type="file" class="form-control" name = "image" placeholder="image" required>						
+						</div>
+						<div class="input-group form-group">
+							<div class="input-group-prepend">				
+								<span class="input-group-text"><i class="fas fa-at"></i></span>
+							</div>
+							<input type="text" class="form-control" name = "email" placeholder="e-mail" required>						
+						</div>
+						<c:if test="${kindList != null}">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-at"></i></span>
+								</div>
+								<select class="form-control" id="category" name="favor">
+			                        <c:forEach var="kind" items="${kindList}" varStatus="status">
+			                        	<option value="${kind.kind_id }">${kind.kind_name }</option>
+			                        </c:forEach>
+								</select>
+							</div>
+						</c:if>
+						<div class="form-group">
+							<input type="submit" value="변경" class="btn float-right login_btn">
+						</div>
+						</form>
+					</div>
+					<div class="card-footer">
+					</div>
+				</div>		    
+			</div>
+		</div>
 	<head>
 
 		<meta charset="utf-8">
@@ -107,6 +163,9 @@
 					<p>
 						안녕하세요. ${login_user.user_name }입니다.
 					</p>
+						<li class="nav-item">
+							<a class="btn btn-primary my-2 my-sm-0" data-toggle="modal" data-target="#myModal2">개인정보 수정</a>
+						</li>     
 					<div class="text-right" style="padding: 0.5rem 1rem;">
 						<button class="btn btn-primary my-2 my-sm-0" type="submit">
 								단어장 만들기

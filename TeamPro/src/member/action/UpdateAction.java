@@ -19,7 +19,6 @@ public class UpdateAction implements Action {
 		UpdateService svc = new UpdateService();
 		HttpSession session = request.getSession();
 		
-		String user_id = request.getParameter("user_name");
 		String user_pass = request.getParameter("user_pass");
 		String user_name = request.getParameter("user_name");
 		String email = request.getParameter("e-mail");
@@ -39,8 +38,8 @@ public class UpdateAction implements Action {
 		
 		ActionForward af = null;
 		MemberDTO dto = (MemberDTO) session.getAttribute("member");
-		if(user_pass != null)dto.setUser_pass(user_pass);;
-		if(user_name != null)dto.setUser_name(user_name);;
+		if(user_pass != null)dto.setUser_pass(user_pass);
+		if(user_name != null)dto.setUser_name(user_name);
 		if(email != null)dto.setEmail(email);
 		if(image != null)dto.setImage(image);
 		if(favor != dto.getFavor())dto.setFavor(favor); 

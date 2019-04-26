@@ -77,20 +77,13 @@ public class MemberFrontController extends HttpServlet {
 					} catch (Exception e) { 
 						e.printStackTrace(); 
 					} 	
-				}/*else if(command.equals("/createForm.member")) {//회원가입폼이동
-		 			action = new CreateFormAction();
-					try { 
-		 				af = action.execute(request, response); 
-		 			} catch (Exception e) { 
-		 				e.printStackTrace(); 
-		 			} 
-				}*/else if(command.equals("/searchForm.member")) {//아이디,비밀번호찾기폼
+				}else if(command.equals("/searchForm.member")) {//아이디,비밀번호찾기폼
 					action = new SearchFormAction();
 					try { 
 						af = action.execute(request, response); 
 					} catch (Exception e) { 
 						e.printStackTrace(); 
-					} 
+					}
 				}else if(command.equals("/sesrchAction.member")) {//아이디,비밀번호찾기
 					action = new SearchAction();
 					try { 
@@ -107,9 +100,9 @@ public class MemberFrontController extends HttpServlet {
 					} 	
 				}else if(command.equals("/updateForm.member")) {//회원정보수정폼
 					action = new UpdateFormAction();
-					try { 
+					try {
 						af = action.execute(request, response); 
-					} catch (Exception e) { 
+					} catch (Exception e) {
 						e.printStackTrace(); 
 					} 	
 				}			
